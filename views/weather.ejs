@@ -1,0 +1,105 @@
+<%- include("partials/header.ejs") %>
+
+<% const weatherSituation = {
+    0: "Clear sky",
+    1: "Mainly Clear",
+    2: "Partly Cloudy",
+    3: "Overcast",
+    45: "Fog",
+    48: "Depositing Rime Fog",
+    51: "Drizzle: Light Intensity",
+    53: "Drizzle: Moderate Intensity",
+    55: "Drizzle: Dense intensity",
+    56: "Freezing Drizzle: Light Intensity",
+    57: "Freezing Drizzle: Light and Dense Intensity",
+    61: "Rain: Slight Intensity",
+    63: "Rain: Moderate Intensity",
+    65: "Rain: Heavy Intensity",
+    66: "Freezing Rain: Light",
+    67: "Freezing Rain: Heavy Intensity",
+    71: "Snow Fall: Slight Intensity",
+    73: "Snow Fall: Moderate Intensity",
+    75: "Snow Fall: Heavy Intensity",
+    77: "Snow Grains",
+    80: "Rain Showers: Slight",
+    81: "Rain Showers: Moderate",
+    82: "Rain Showers: Violent",
+    85: "Snow Showers: Slight",
+    86: "Snow Showers: Heavy",
+    95: "Thunderstorm: Slight or Moderate",
+    96: "Thunderstorm with Slight Hail",
+    99: "Thunderstorm with Heavy Hail",
+};%>
+
+<% const weatherIcons = {
+    0: "bi-sun",                     // Clear sky
+    1: "bi-sun",                     // Mainly Clear (same as clear)
+    2: "bi-cloud-sun",               // Partly Cloudy
+    3: "bi-clouds",                   // Overcast
+    45: "bi-cloud-fog",              // Fog
+    48: "bi-cloud-fog2",             // Depositing Rime Fog
+    51: "bi-cloud-drizzle",          // Light Drizzle
+    53: "bi-cloud-drizzle-fill",     // Moderate Drizzle
+    55: "bi-cloud-rain-heavy",       // Dense Drizzle
+    56: "bi-cloud-sleet",            // Freezing Drizzle Light
+    57: "bi-cloud-sleet-fill",       // Freezing Drizzle Dense
+    61: "bi-cloud-rain",             // Slight Rain
+    63: "bi-cloud-rain-heavy",       // Moderate Rain
+    65: "bi-cloud-rain-heavy-fill",  // Heavy Rain
+    66: "bi-cloud-hail",             // Freezing Rain Light
+    67: "bi-cloud-hail-fill",        // Freezing Rain Heavy
+    71: "bi-cloud-snow",             // Slight Snow
+    73: "bi-snow",                   // Moderate Snow
+    75: "bi-snow2",                  // Heavy Snow
+    77: "bi-snow3",                  // Snow Grains
+    80: "bi-cloud-rain",             // Slight Rain Showers
+    81: "bi-cloud-rain-heavy",       // Moderate Rain Showers
+    82: "bi-cloud-lightning-rain",   // Violent Rain Showers
+    85: "bi-cloud-snow",             // Slight Snow Showers
+    86: "bi-snow2",                  // Heavy Snow Showers
+    95: "bi-cloud-lightning",        // Thunderstorm
+    96: "bi-cloud-lightning-rain",   // Thunderstorm + Hail
+    99: "bi-cloud-lightning-rain-fill" // Heavy Thunderstorm + Hail
+};%>
+
+<!-- Current Weather -->
+<% if (locals.weather && locals.location) {%>
+    <div class="container">
+        <div class="card mb-4 bg-weather-primary weather-card text-black shadow">
+            <div class="card-body p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="mb-3" id="currentCity"><%= location %></h2>
+                        <h1 class="display-3 fw-bold" id="currentTemp"><%= Math.round(weather["current"]["temperature_2m"]) %><%= weather["current_units"]["temperature_2m"] %></h1>
+                        <p class="fs-5" id="currentCondition"><%= weatherSituation[weather["current"]["weather_code"]] %> </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <i class="bi <%= weatherIcons[weather['current']['weather_code']] %>" width="120px"></i>
+                        <p class="mt-2" id="currentDetails">Humidity: <%= weather["current"]["relative_humidity_2m"] %>% | Wind: <%= weather["current"]["wind_speed_10m"] %> km/h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7-Day Forecast -->
+    <div class="container">
+        <h3 class="mb-3 text-white">7-Day Forecast</h3>
+        <div class="row g-3" id="forecastContainer">
+            <% for (let i = 0; i < weather["daily"]["time"].length; i++) {%>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card weather-card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><%= weather["daily"]["time"][i] %></h5>
+                                <i class="bi <%= weatherIcons[weather["daily"]["weather_code"][i]] %>" width="60"></i>
+                                <p class="fs-4 mt-2"><%= Math.round(weather["daily"]["temperature_2m_mean"][i]) %><%= weather["daily_units"]["temperature_2m_mean"] %></p>
+                                <p class="text-muted"><%= weatherSituation[weather["daily"]["weather_code"][i]] %></p>
+                            </div>
+                        </div>
+                    </div>
+            <%  }%>
+        </div>
+    </div>
+<% }%>
+
+<%- include("partials/footer.ejs") %>

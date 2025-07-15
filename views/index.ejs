@@ -1,0 +1,38 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+    <div class="text-secondary px-4 py-5 text-center">
+        <div class="py-5">
+            <h3 class="display-5 fw-bold text-white">Search</h3>
+            <form action="/get-weather" method="POST">
+                <div class="col-lg-6 mx-auto">
+                    <input class="form-control" type="text" list="datalistOptions" id="DataList" name="location" placeholder="Type a location to search..." required>
+                    <datalist id="datalistOptions">
+                        <option value="New York">
+                        <option value="London">
+                        <option value="Tokyo">
+                        <option value="Sydney">
+                        <option value="Dubai">
+                    </datalist>
+                </div>
+                <div class="py-3 my-3">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container py-4 text-center">
+    <div class="mb-4">
+      <h1 class="fw-bold text-white">About <span class="text-primary">Sky<span class="text-white">Cast</span></span></h1>
+      <p class="lead  text-white">A simple, open-source weather project.</p>
+    </div>
+    <p class="mb-4 text-white">
+      SkyCast provides hyperlocal forecasts using free APIs. Built for learning—not profit—with ❤️.
+    </p>
+    <span class="text-warning">Powered By Open-Meteo</span>
+</div>
+
+
+<%- include("partials/footer.ejs") %>
