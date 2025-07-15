@@ -31,7 +31,7 @@ Displays current weather and a 7-day forecast (mean temperature, wind speed, and
 
 ```bash
 git clone https://github.com/mrphoenix300/Weather-Site.git
-cd simple-weather-app
+cd Weather-Site
 ````
 
 ### 2. Install dependencies
@@ -52,7 +52,7 @@ Then open your browser and go to:
 ## 📁 Project Structure
 
 ```
-simple-weather-app/
+Weather-Site/
 ├── public/
 │   └── css/
 │       └── styles.css        # CSS styling
