@@ -1,5 +1,4 @@
-````markdown
-# 🌤️ Simple Weather App
+## 🌤️ Simple Weather App
 
 A simple, non-commercial weather website built with **HTML**, **CSS**, and **JavaScript**, using the free and open-source [Open-Meteo API](https://open-meteo.com/).  
 Search for any location and get real-time weather data and forecasts through a clean and responsive UI.
@@ -26,7 +25,7 @@ Search for any location and get real-time weather data and forecasts through a c
    ```bash
    git clone https://github.com/your-username/simple-weather-app.git
    cd simple-weather-app
-````
+``
 
 ### 2. Install dependencies
 
@@ -61,10 +60,6 @@ Weather-Site/
 ## 🧪 Example Usage
 
 Users enter a location; the backend fetches weather data from Open-Meteo, processes it, and returns the current weather and 7-day forecast in JSON format, which the frontend then displays.
-
-## 🔒 License
-
-This project is licensed under the **MIT License**.
 Free for educational and non-commercial use.
 
 > Weather data provided by [Open-Meteo](https://open-meteo.com/). No API key required.
