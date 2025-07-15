@@ -1,31 +1,38 @@
-## 🌤️ Simple Weather App
+# 🌤️ Simple Weather App
 
-A simple, non-commercial weather website built with **HTML**, **CSS**, and **JavaScript**, using the free and open-source [Open-Meteo API](https://open-meteo.com/).  
-Search for any location and get real-time weather data and forecasts through a clean and responsive UI.
+A simple, non-commercial weather website built with **Node.js**, **Express**, and **EJS templates**, using the free [Open-Meteo API](https://open-meteo.com/).  
+Displays current weather and a 7-day forecast (mean temperature, wind speed, and humidity) for a user-defined location.
 
 ## 🔍 Features
 
-- 🌐 Get current weather conditions by location
-- 🌡️ Display temperature, wind speed, and more
-- 🧩 Powered by the Open-Meteo API
-- 📱 Responsive design for desktop and mobile
-- 🧪 Beginner-friendly codebase for learning API usage
+- 🌍 Search weather by city or coordinates
+- 🌡️ **Current Weather**:
+  - Temperature
+  - Wind Speed
+  - Humidity
+- 📅 **7-Day Forecast**:
+  - Mean Daily Temperature
+  - Wind Speed
+  - Humidity
+- 🧰 Backend rendering with **EJS**
+- 🎨 CSS styling under `public/css`
+- ⚡ No API key required (Open-Meteo)
 
 ## 🛠️ Tech Stack
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- [Open-Meteo API](https://open-meteo.com/)
+- **Backend:** Node.js, Express.js
+- **Templating Engine:** EJS
+- **Frontend:** HTML, CSS (via EJS templates), Bootstrap
+- **API:** [Open-Meteo API](https://open-meteo.com/)
 
 ## 🚀 Getting Started
 
-1. **Clone this repository:**
+### 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/your-username/simple-weather-app.git
-   cd simple-weather-app
-``
+```bash
+git clone https://github.com/mrphoenix300/Weather-Site.git
+cd simple-weather-app
+````
 
 ### 2. Install dependencies
 
@@ -39,29 +46,26 @@ npm install
 node index.js
 ```
 
-The app will be running at:
+Then open your browser and go to:
 `http://localhost:3000`
 
-## 📦 Folder Structure
+## 📁 Project Structure
 
 ```
-Weather-Site/
+simple-weather-app/
 ├── public/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── routes/
-│   └── weather.js       # Express route handling API requests
-├── app.js               # Main Express server
-├── package.json
+│   └── css/
+│       └── styles.css        # CSS styling
+├── views/
+│   ├── partials/             # EJS partials (e.g. header/footer)
+│   ├── index.ejs             # Home page with search input
+│   └── weather.ejs           # Weather result page
+├── .gitignore
+├── index.js                  # Express server entry point
 └── README.md
 ```
 
-## 🧪 Example Usage
+## 📌 Notes
 
-Users enter a location; the backend fetches weather data from Open-Meteo, processes it, and returns the current weather and 7-day forecast in JSON format, which the frontend then displays.
-Free for educational and non-commercial use.
-
-> Weather data provided by [Open-Meteo](https://open-meteo.com/). No API key required.
-
-```
+* Weather data is fetched server-side from the [Open-Meteo API](https://open-meteo.com/) and rendered using EJS.
+* This is a learning/demo project. You can expand it with more features like historical data, charts, etc.
